@@ -1,7 +1,7 @@
 // Requires
 const mongoose = require('mongoose');
 
-// Creation of Schema for Posts
+// Creation of Schema for Books
 const schema = new mongoose.Schema({
 	title: {
 		type: String,
@@ -13,5 +13,5 @@ const schema = new mongoose.Schema({
 	}
 });
 
-// Exporting the schema model calling "Post"
-module.exports = mongoose.model("Post", schema);
+// Exporting the schema model calling "Book"
+module.exports = mongoose.model("Book", schema);

@@ -1,5 +1,5 @@
-// Validation before create a new Post
-exports.createPostValidator = (req, res, next) =>{
+// Validation before create a new Book
+exports.create = (req, res, next) =>{
 	
 	// title
 	req.check('title', 'Write a title').notEmpty();

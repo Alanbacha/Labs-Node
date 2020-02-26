@@ -10,7 +10,7 @@ const expressValidator = require('express-validator');
 const dotenv = require('dotenv');
 
 // Requiring the routes whose was cofigured in the file bellow 
-const postRoutes = require('./routes/post');
+const postRoutes = require('./routes/routes');
 
 // Setting the port where the application wil run
 const port = process.env.PORT || 8080;

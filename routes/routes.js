@@ -15,14 +15,18 @@ const bookValidator = require('../validator/book');
 const router = express.Router();
 
 // Creating routes for Posts
-router.get('/post/get-all', postController.getAll);
-router.get('/post/get/', postController.get);
 router.post('/post/create', postValidator.create, postController.create);
+router.get('/post/list', postController.list);
+router.get('/post/get/', postController.get);
+router.post('/post/update', postValidator.update, postController.update);
 router.delete('/post/delete', postValidator.delete, postController.delete);
 
 // Creating routes for Books
-router.get('/book/get-all', bookController.getAll);
 router.post('/book/create', bookValidator.create, bookController.create);
+router.get('/book/list', bookController.list);
+router.get('/book/get', bookController.get);
+router.post('/book/update', bookValidator.update, bookController.update);
+router.delete('/book/delete', bookValidator.delete, bookController.delete);
 
 // Exporting the Router with the news routes
 module.exports = router;

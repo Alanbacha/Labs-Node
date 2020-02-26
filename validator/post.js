@@ -22,3 +22,23 @@ exports.create = (req, res, next) =>{
 	// proceed to next middleware
 	next();
 }
+
+// Validation before delete a Post
+exports.delete = (req, res, next) =>{
+	
+	// _id
+	req.check('_id', '_id is required').notEmpty();
+
+	// check for errors
+	const errors = req.validationErrors();
+	
+	// if error show the first one as they happen
+	if (errors){
+		const firstError = errors.map((error) => error.msg)[0]
+		
+		return res.status(400).json({error: firstError})
+	}
+	
+	// proceed to next middleware
+	next();
+}

@@ -18,6 +18,7 @@ const router = express.Router();
 router.get('/post/get-all', postController.getAll);
 router.get('/post/get/', postController.get);
 router.post('/post/create', postValidator.create, postController.create);
+router.delete('/post/delete', postValidator.delete, postController.delete);
 
 // Creating routes for Books
 router.get('/book/get-all', bookController.getAll);

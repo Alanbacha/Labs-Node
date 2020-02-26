@@ -20,7 +20,7 @@ exports.list = (req, res) => {
 
 // A method to Get a especifique Book
 exports.get = (req, res) => {
-	Book.findById(req.query._id).select("_id title body") // requiring only these fields
+	Book.findOne({"_id" : req.params.id}).select("_id title body") // requiring only these fields
 	.then(book => res.json({book}))
 	.catch(err => {console.log(err); res.json({"success": false, error: err})})
 	;
@@ -28,7 +28,7 @@ exports.get = (req, res) => {
 
 // A method to Update Book
 exports.update = (req, res) => {
-	Book.findByIdAndUpdate(req.query._id, req.body, {new: true, upsert: true })
+	Book.findOneAndUpdate({"_id" : req.params.id}, req.body, {new: true, upsert: true })
 	.then(result =>res.json({"success": result != null}))
 	.catch(err => {console.log(err); res.json({"success": false, error: err})})
 	;
@@ -36,8 +36,8 @@ exports.update = (req, res) => {
 
 // A method to Delete Book
 exports.delete = (req, res) => {
-	Book.findByIdAndRemove(req.query._id)
-	.then(result =>res.json({"success": result != null}))
+	Book.findOneAndDelete({"_id" : req.params.id})
+	.then(result => res.json({"success": result != null}))
 	.catch(err => {console.log(err); res.json({"success": false, error: err})})
 	;
 };

@@ -20,7 +20,7 @@ exports.list = (req, res) => {
 
 // A method to Get a especifique Post
 exports.get = (req, res) => {
-	Post.findById(req.query._id).select("_id title body") // requiring only these fields
+	Post.findOne({"_id" : req.params.id}).select("_id title body") // requiring only these fields
 	.then(post => res.json({post}))
 	.catch(err => {console.log(err); res.json({"success": false, error: err})})
 	;
@@ -28,7 +28,7 @@ exports.get = (req, res) => {
 
 // A method to Update Post
 exports.update = (req, res) => {
-	Post.findByIdAndUpdate(req.query._id, req.body, {new: true, upsert: true })
+	Post.findOneAndUpdate({"_id" : req.params.id}, req.body, {new: true, upsert: true })
 	.then(result =>res.json({"success": result != null}))
 	.catch(err => {console.log(err); res.json({"success": false, error: err})})
 	;
@@ -36,7 +36,7 @@ exports.update = (req, res) => {
 
 // A method to Delete Post
 exports.delete = (req, res) => {
-	Post.findByIdAndRemove(req.query._id)
+	Post.findOneAndDelete({"_id" : req.params.id})
 	.then(result => res.json({"success": result != null}))
 	.catch(err => {console.log(err); res.json({"success": false, error: err})})
 	;

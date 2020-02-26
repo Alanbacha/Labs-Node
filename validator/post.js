@@ -27,7 +27,7 @@ exports.create = (req, res, next) =>{
 exports.update = (req, res, next) =>{
 	
 	// _id
-	req.check('_id', '_id is required').notEmpty();
+	req.check('id', 'id is required').notEmpty();
 
 	// title
 	req.check('title', 'Write a title').notEmpty();
@@ -55,7 +55,7 @@ exports.update = (req, res, next) =>{
 exports.delete = (req, res, next) =>{
 	
 	// _id
-	req.check('_id', '_id is required').notEmpty();
+	req.check('id', 'id is required').notEmpty();
 
 	// check for errors
 	const errors = req.validationErrors();

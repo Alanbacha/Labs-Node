@@ -15,18 +15,18 @@ const bookValidator = require('../validator/book');
 const router = express.Router();
 
 // Creating routes for Posts
-router.post('/post/create', postValidator.create, postController.create);
-router.get('/post/list', postController.list);
-router.get('/post/get/', postController.get);
-router.post('/post/update', postValidator.update, postController.update);
-router.delete('/post/delete', postValidator.delete, postController.delete);
+router.post('/post', postValidator.create, postController.create);
+router.get('/post', postController.list);
+router.get('/post/:id', postController.get);
+router.put('/post/:id', postValidator.update, postController.update);
+router.delete('/post/:id', postValidator.delete, postController.delete);
 
 // Creating routes for Books
-router.post('/book/create', bookValidator.create, bookController.create);
-router.get('/book/list', bookController.list);
-router.get('/book/get', bookController.get);
-router.post('/book/update', bookValidator.update, bookController.update);
-router.delete('/book/delete', bookValidator.delete, bookController.delete);
+router.post('/book', bookValidator.create, bookController.create);
+router.get('/book', bookController.list);
+router.get('/book/:id', bookController.get);
+router.post('/book/:id', bookValidator.update, bookController.update);
+router.delete('/book/:id', bookValidator.delete, bookController.delete);
 
 // Exporting the Router with the news routes
 module.exports = router;

@@ -16,6 +16,7 @@ const router = express.Router();
 
 // Creating routes for Posts
 router.get('/post/get-all', postController.getAll);
+router.get('/post/get/', postController.get);
 router.post('/post/create', postValidator.create, postController.create);
 
 // Creating routes for Books

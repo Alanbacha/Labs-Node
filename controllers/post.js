@@ -9,6 +9,14 @@ exports.getAll = (req, res) => {
 	;
 };
 
+// Creating a method to Get a especifique Post
+exports.get = (req, res) => {
+	const post = Post.findById(req.query._id).select("_id title body") // requiring only these fields
+	.then(post => {res.json({post})})
+	.catch(err => console.log(err))
+	;
+};
+
 // Creating a method to Create Posts
 exports.create = (req, res) => {
 	const post = new Post(req.body);

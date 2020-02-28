@@ -6,7 +6,9 @@ This is an example of an application using NodeJS to make API using model and co
 
 First you need to install [Node.JS](https://nodejs.org/en/download/).
 
-Second, if you want to clone this project using [Git](https://git-scm.com/downloads), you can open you terminal in the folder that you want to create a copy of this project and use this code bellow.
+Second, you will need a MongoDB database. So, register yourself on [MongoDB.Atlas](https://account.mongodb.com/account/login?nds=true).
+
+Third, if you want to clone this project using [Git](https://git-scm.com/downloads), you can open you terminal in the folder that you want to create a copy of this project and use this code bellow.
 
 ```
 git clone https://github.com/Alanbacha/Labs-Node.git

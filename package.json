@@ -1,26 +1,32 @@
 {
-  "name": "labs-node",
-  "version": "1.0.0",
-  "description": "Node",
-  "main": "app.js",
-  "scripts": {
-    "dev": "nodemon app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Alanbacha/Labs-Node.git"
-  },
-  "keywords": [
-    "Node",
-    "NodeJS"
-  ],
-  "author": "Alan Bacha",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Alanbacha/Labs-Node/issues"
-  },
-  "homepage": "https://github.com/Alanbacha/Labs-Node#readme",
-  "dependencies": {
-    "express": "^4.17.1"
-  }
+	"name": "labs-node",
+	"version": "1.0.0",
+	"description": "Node",
+	"main": "app.js",
+	"scripts": {
+		"dev": "nodemon app.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Alanbacha/Labs-Node.git"
+	},
+	"keywords": [
+		"Node",
+		"NodeJS"
+	],
+	"author": "Alan Bacha",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Alanbacha/Labs-Node/issues"
+	},
+	"homepage": "https://github.com/Alanbacha/Labs-Node#readme",
+	"dependencies": {
+		"body-parser": "^1.19.0",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"express-validator": "^5.0.0",
+		"mongoose": "^5.9.3",
+		"morgan": "^1.9.1",
+		"nodemon": "^2.0.2"
+	}
 }

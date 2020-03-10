@@ -23,6 +23,10 @@ const schema = new mongoose.Schema({
 		type: mongoose.Schema.Types.Decimal128,
 		required: true
 	},
+	date: {
+		type: Date,
+		required: true
+	},
 	created: {
 		type: Date
 	},

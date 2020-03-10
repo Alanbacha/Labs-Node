@@ -26,7 +26,6 @@ exports.create = (req, res) => {
  */
 exports.list = (req, res) => {
 	Category.find()
-		.select() // requiring only these fields
 		.then(categories => res.json({ categories }))
 		.catch(err => {
 			console.log(err);
@@ -41,7 +40,7 @@ exports.list = (req, res) => {
  */
 exports.get = (req, res) => {
 	Category.findOne({ _id: req.params.id })
-		.select() // requiring only these fields
+		.populate("category")
 		.then(category => res.json({ category }))
 		.catch(err => {
 			console.log(err);

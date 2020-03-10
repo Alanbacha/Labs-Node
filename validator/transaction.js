@@ -100,6 +100,17 @@ const checkAttributeValue = req => {
 };
 
 /**
+ * Check attribute date
+ * @param {*} req HTTP request argument to the middleware function, called "req" by convention.
+ */
+const checkAttributeDate = req => {
+	// value
+	req.check("date")
+		.notEmpty()
+		.withMessage("You need to inform a date of the transaction");
+};
+
+/**
  * Check for errors
  * @param {*} req HTTP request argument to the middleware function, called "req" by convention.
  * @param {*} res HTTP response argument to the middleware function, called "res" by convention.
@@ -135,6 +146,7 @@ exports.create = (req, res, next) => {
 	checkAttributeDescription(req);
 	checkAttributeIsExpense(req);
 	checkAttributeValue(req);
+	checkAttributeDate(req);
 
 	// Check errors
 	checkForErros(req, res, next);
@@ -154,6 +166,7 @@ exports.update = (req, res, next) => {
 	checkAttributeDescription(req);
 	checkAttributeIsExpense(req);
 	checkAttributeValue(req);
+	checkAttributeDate(req);
 
 	// Check errors
 	checkForErros(req, res, next);

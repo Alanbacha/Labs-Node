@@ -1,7 +1,11 @@
 // Getting schema "Transaction" from the file bellow
 const Transaction = require("../models/transaction");
 
-// A method to Create Transaction
+/**
+ * A method to Create Transaction
+ * @param {*} req HTTP request argument to the middleware function, called "req" by convention.
+ * @param {*} res HTTP response argument to the middleware function, called "res" by convention.
+ */
 exports.create = (req, res) => {
 	req.body.created = Date.now();
 	req.body.updated = Date.now();
@@ -15,7 +19,11 @@ exports.create = (req, res) => {
 		});
 };
 
-// A method to List Transactions
+/**
+ * A method to List Transactions
+ * @param {*} req HTTP request argument to the middleware function, called "req" by convention.
+ * @param {*} res HTTP response argument to the middleware function, called "res" by convention.
+ */
 exports.list = (req, res) => {
 	Transaction.find()
 		.select() // requiring only these fields
@@ -26,7 +34,11 @@ exports.list = (req, res) => {
 		});
 };
 
-// A method to Get a especifique Transaction
+/**
+ * A method to Get a especifique Transaction
+ * @param {*} req HTTP request argument to the middleware function, called "req" by convention.
+ * @param {*} res HTTP response argument to the middleware function, called "res" by convention.
+ */
 exports.get = (req, res) => {
 	Transaction.findOne({ _id: req.params.id })
 		.select() // requiring only these fields
@@ -37,7 +49,11 @@ exports.get = (req, res) => {
 		});
 };
 
-// A method to Update Transaction
+/**
+ * A method to Update Transaction
+ * @param {*} req HTTP request argument to the middleware function, called "req" by convention.
+ * @param {*} res HTTP response argument to the middleware function, called "res" by convention.
+ */
 exports.update = (req, res) => {
 	req.body.updated = Date.now();
 
@@ -52,7 +68,11 @@ exports.update = (req, res) => {
 		});
 };
 
-// A method to Delete Transaction
+/**
+ * A method to Delete Transaction
+ * @param {*} req HTTP request argument to the middleware function, called "req" by convention.
+ * @param {*} res HTTP response argument to the middleware function, called "res" by convention.
+ */
 exports.delete = (req, res) => {
 	Transaction.findOneAndDelete({ _id: req.params.id })
 		.then(result => res.json({ success: result != null, result }))
@@ -62,7 +82,11 @@ exports.delete = (req, res) => {
 		});
 };
 
-// A method to Delete many Transactions
+/**
+ * A method to Delete many Transactions
+ * @param {*} req HTTP request argument to the middleware function, called "req" by convention.
+ * @param {*} res HTTP response argument to the middleware function, called "res" by convention.
+ */
 exports.deleteMany = (req, res) => {
 	Category.deleteMany({ _id: { $in: req.body.ids } })
 		.then(result => res.json({ success: result != null && result.n > 0 && result.n == result.deletedCount, result }))

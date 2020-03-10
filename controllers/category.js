@@ -1,7 +1,11 @@
 // Getting schema "Category" from the file bellow
 const Category = require("../models/category");
 
-// A method to Create Category
+/**
+ * A method to Create Category
+ * @param {*} req HTTP request argument to the middleware function, called "req" by convention.
+ * @param {*} res HTTP response argument to the middleware function, called "res" by convention.
+ */
 exports.create = (req, res) => {
 	req.body.created = Date.now();
 	req.body.updated = Date.now();
@@ -15,7 +19,11 @@ exports.create = (req, res) => {
 		});
 };
 
-// A method to List Categories
+/**
+ * A method to List Categories
+ * @param {*} req HTTP request argument to the middleware function, called "req" by convention.
+ * @param {*} res HTTP response argument to the middleware function, called "res" by convention.
+ */
 exports.list = (req, res) => {
 	Category.find()
 		.select() // requiring only these fields
@@ -26,7 +34,11 @@ exports.list = (req, res) => {
 		});
 };
 
-// A method to Get a especifique Category
+/**
+ * A method to Get a especifique Category
+ * @param {*} req HTTP request argument to the middleware function, called "req" by convention.
+ * @param {*} res HTTP response argument to the middleware function, called "res" by convention.
+ */
 exports.get = (req, res) => {
 	Category.findOne({ _id: req.params.id })
 		.select() // requiring only these fields
@@ -37,7 +49,11 @@ exports.get = (req, res) => {
 		});
 };
 
-// A method to Update Category
+/**
+ * A method to Update Category
+ * @param {*} req HTTP request argument to the middleware function, called "req" by convention.
+ * @param {*} res HTTP response argument to the middleware function, called "res" by convention.
+ */
 exports.update = (req, res) => {
 	req.body.updated = Date.now();
 
@@ -52,7 +68,11 @@ exports.update = (req, res) => {
 		});
 };
 
-// A method to Delete Category
+/**
+ * A method to Delete Category
+ * @param {*} req HTTP request argument to the middleware function, called "req" by convention.
+ * @param {*} res HTTP response argument to the middleware function, called "res" by convention.
+ */
 exports.delete = (req, res) => {
 	Category.findOneAndDelete({ _id: req.params.id })
 		.then(result => res.json({ success: result != null, result }))
@@ -62,7 +82,11 @@ exports.delete = (req, res) => {
 		});
 };
 
-// A method to Delete many Categories
+/**
+ * A method to Delete many Categories
+ * @param {*} req HTTP request argument to the middleware function, called "req" by convention.
+ * @param {*} res HTTP response argument to the middleware function, called "res" by convention.
+ */
 exports.deleteMany = (req, res) => {
 	Category.deleteMany({ _id: { $in: req.body.ids } })
 		.then(result => res.json({ success: result != null && result.n > 0 && result.n == result.deletedCount, result }))

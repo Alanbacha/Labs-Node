@@ -5,23 +5,14 @@ const express = require("express");
 //const {getPosts, createPost} = require('../controllers/post');
 
 // Getting methods the files bellow
-const postController = require("../controllers/post");
 const categoryController = require("../controllers/category");
 const transactionController = require("../controllers/transaction");
 
-const postValidator = require("../validator/post");
 const categoryValidator = require("../validator/category");
 const transactionValidator = require("../validator/transaction");
 
 // Creating a Router
 const router = express.Router();
-
-// Creating routes for Posts
-router.post("/post", postValidator.create, postController.create);
-router.get("/post", postController.list);
-router.get("/post/:id", postController.get);
-router.put("/post/:id", postValidator.update, postController.update);
-router.delete("/post/:id", postValidator.delete, postController.delete);
 
 // Creating routes for Categories
 router.post("/category", categoryValidator.create, categoryController.create);

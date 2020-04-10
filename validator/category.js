@@ -1,8 +1,10 @@
+const { check, validationResult } = require("express-validator");
+
 /**
  * Check attribute category
  * @param {*} req HTTP request argument to the middleware function, called "req" by convention.
  */
-const checkAttributeCategory = req => {
+const checkAttributeCategory = (req) => {
 	if (req.body.category) {
 		// Requires
 		const mongoose = require("mongoose");
@@ -13,11 +15,11 @@ const checkAttributeCategory = req => {
 		req.check("category")
 			.notEmpty()
 			.withMessage("Choose a category")
-			.custom(value => {
+			.custom((value) => {
 				if (mongoose.isValidObjectId(value)) {
 					return Category.findOne({ _id: value })
 						.select()
-						.then(result => {
+						.then((result) => {
 							if (result == null) {
 								throw new Error();
 							}
@@ -34,43 +36,33 @@ const checkAttributeCategory = req => {
  * Check attribute ids
  * @param {*} req HTTP request argument to the middleware function, called "req" by convention.
  */
-const checkAttributeIds = req => {
-	req.check("ids")
-		.isArray()
-		.withMessage("list of ids is required");
+const checkAttributeIds = (req) => {
+	req.check("ids").isArray().withMessage("list of ids is required");
 };
 
 /**
  * Check attribute id
  * @param {*} req HTTP request argument to the middleware function, called "req" by convention.
  */
-const checkAttributeId = req => {
-	req.check("id")
-		.notEmpty()
-		.withMessage("id is required");
+const checkAttributeId = (req) => {
+	req.check("id").notEmpty().withMessage("id is required");
 };
 
 /**
  * Check attribute name
  * @param {*} req HTTP request argument to the middleware function, called "req" by convention.
  */
-const checkAttributeName = req => {
-	req.check("name")
-		.notEmpty()
-		.withMessage("Write a name")
-		.isLength({ min: 4, max: 150 })
-		.withMessage("the name must be between 4 to 150 characters");
+const checkAttributeName = (req) => {
+	req.check("name").notEmpty().withMessage("Write a name").isLength({ min: 4, max: 150 }).withMessage("the name must be between 4 to 150 characters");
 };
 
 /**
  * Check attribute description
  * @param {*} req HTTP request argument to the middleware function, called "req" by convention.
  */
-const checkAttributeDescription = req => {
+const checkAttributeDescription = (req) => {
 	if (req.body.description) {
-		req.check("description")
-			.isLength({ min: 4, max: 150 })
-			.withMessage("The description must be between 4 to 150 characters");
+		req.check("description").isLength({ min: 4, max: 150 }).withMessage("The description must be between 4 to 150 characters");
 	}
 };
 
@@ -82,15 +74,15 @@ const checkAttributeDescription = req => {
  */
 const checkForErros = (req, res, next) => {
 	req.asyncValidationErrors()
-		.then(result => {
+		.then((result) => {
 			// Proceed to next middleware
 			next();
 		})
-		.catch(errors => {
+		.catch((errors) => {
 			console.log("b");
 			// if error show the first one as they happen
 			if (errors) {
-				const firstError = errors.map(error => error.msg)[0];
+				const firstError = errors.map((error) => error.msg)[0];
 				console.log("c");
 				return res.status(400).json({ success: false, error: firstError });
 			}
